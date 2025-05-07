@@ -1,7 +1,22 @@
 [gd_scene load_steps=8 format=3 uid="uid://dtkdd0tcndje"]
 
 [ext_resource type="Texture2D" uid="uid://cv1uji2iyuegx" path="res://Sprites/Characters/character1.png" id="1_0y7nr"]
-[ext_resource type="Script" uid="uid://c0cbljdy6uwxp" path="res://Scenes/player.gd" id="1_jo2ib"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_jo2ib"]
+
+[sub_resource type="Animation" id="Animation_0y7nr"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_677pu"]
 length = 6.7
@@ -34,21 +49,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [1, 2, 3, 4, 5, 6, 7, 8, 9]
-}
-
-[sub_resource type="Animation" id="Animation_0y7nr"]
-resource_name = "Idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v7dgu"]
