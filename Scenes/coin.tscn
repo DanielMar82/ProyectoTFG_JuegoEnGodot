@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://dm78yfnpcqn0x"]
+
+[ext_resource type="Texture2D" uid="uid://cnb86omj0ytaf" path="res://Sprites/Decoration/Coin.png" id="1_2qo34"]
+[ext_resource type="Script" uid="uid://dvmb6651s3kfn" path="res://Scripts/coin.gd" id="1_jgi06"]
+[ext_resource type="AudioStream" uid="uid://b6sdkeubh0ey" path="res://Music_Sounds/CoinSound.ogg" id="3_g537i"]
+
+[sub_resource type="Animation" id="Animation_2qo34"]
+resource_name = "Idle"
+length = 2.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.733333, 1.1, 1.46667, 1.83333, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_jgi06"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g537i"]
+_data = {
+&"Idle": SubResource("Animation_2qo34"),
+&"RESET": SubResource("Animation_jgi06")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jgi06"]
+height = 22.0
+
+[node name="Coin" type="Node2D"]
+script = ExtResource("1_jgi06")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("1_2qo34")
+hframes = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_g537i")
+}
+speed_scale = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_jgi06")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Area2D"]
+stream = ExtResource("3_g537i")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

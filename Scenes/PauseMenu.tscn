@@ -1,0 +1,170 @@
+[gd_scene load_steps=10 format=3 uid="uid://cniqud2vmdcgg"]
+
+[ext_resource type="Shader" uid="uid://c7p23cy47v058" path="res://PauseMenu.gdshader" id="1_lj4oq"]
+[ext_resource type="Script" uid="uid://dnqjbnfae7g1d" path="res://Scripts/PauseMenu.gd" id="1_qwhev"]
+
+[sub_resource type="Animation" id="Animation_5w4ur"]
+resource_name = "Blur"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ey1tb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_siy43"]
+_data = {
+&"Blur": SubResource("Animation_5w4ur"),
+&"RESET": SubResource("Animation_ey1tb")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qwhev"]
+shader = ExtResource("1_lj4oq")
+shader_parameter/lod = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2eowd"]
+bg_color = Color(0, 0.345098, 0.443137, 0.972549)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lj4oq"]
+bg_color = Color(0, 0.345098, 0.443137, 0.972549)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qwhev"]
+bg_color = Color(0, 0.345098, 0.443137, 0.439216)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qwhev")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_siy43")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_qwhev")
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 180.0
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -90.0
+offset_right = 160.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VolumeButton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_styles/focus = SubResource("StyleBoxFlat_2eowd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lj4oq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_qwhev")
+text = "Volume"
+
+[node name="ResolutionButton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_styles/focus = SubResource("StyleBoxFlat_2eowd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lj4oq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_qwhev")
+text = "Resolution
+"
+
+[node name="RestartButton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_styles/focus = SubResource("StyleBoxFlat_2eowd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lj4oq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_qwhev")
+text = "Go back
+"
+
+[node name="ExitButton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_styles/focus = SubResource("StyleBoxFlat_2eowd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lj4oq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_qwhev")
+text = "Exit the game"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/VolumeButton" to="." method="_on_volume_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/ResolutionButton" to="." method="_on_resolution_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
