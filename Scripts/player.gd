@@ -10,6 +10,7 @@ const gravity = 20
 
 @onready var sprite = $Sprite2D
 @onready var animationPlayer = $AnimationPlayer
+var coins: int = 20
 
 var current_state = ""
 var can_move: bool = true

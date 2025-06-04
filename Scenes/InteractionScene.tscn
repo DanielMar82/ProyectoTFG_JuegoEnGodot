@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1vgqdrnrd2y3"]
+
+[ext_resource type="Script" uid="uid://bfgu4mhorf2cn" path="res://Scripts/interaction_scene.gd" id="1_g4qvk"]
+[ext_resource type="PackedScene" uid="uid://bh0mddmtnmatd" path="res://Interactions/interaction_area/interaction_area.tscn" id="2_raux4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dlkvu"]
+size = Vector2(27, 63)
+
+[node name="InteractionScene" type="Node2D"]
+script = ExtResource("1_g4qvk")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_raux4")]
+collision_layer = 1
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, 21.5)
+shape = SubResource("RectangleShape2D_dlkvu")

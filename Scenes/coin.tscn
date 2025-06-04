@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cnb86omj0ytaf" path="res://Sprites/Decoration/Coin.png" id="1_2qo34"]
 [ext_resource type="Script" uid="uid://dvmb6651s3kfn" path="res://Scripts/coin.gd" id="1_jgi06"]
-[ext_resource type="AudioStream" uid="uid://b6sdkeubh0ey" path="res://Music_Sounds/CoinSound.ogg" id="3_g537i"]
+[ext_resource type="AudioStream" uid="uid://b6sdkeubh0ey" path="res://Music_Sounds/Sounds/CoinSound.ogg" id="3_g537i"]
 
 [sub_resource type="Animation" id="Animation_2qo34"]
 resource_name = "Idle"

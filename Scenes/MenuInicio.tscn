@@ -91,7 +91,7 @@ theme_override_font_sizes/font_size = 18
 theme_override_styles/focus = SubResource("StyleBoxFlat_2w01c")
 theme_override_styles/hover = SubResource("StyleBoxFlat_swkfd")
 theme_override_styles/normal = SubResource("StyleBoxFlat_haodl")
-text = "Start playing"
+text = "Nueva partida"
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -99,7 +99,7 @@ theme_override_font_sizes/font_size = 13
 theme_override_styles/focus = SubResource("StyleBoxFlat_2bkxv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_86a87")
 theme_override_styles/normal = SubResource("StyleBoxFlat_haodl")
-text = "Options
+text = "Opciones
 "
 
 [node name="ExitButton" type="Button" parent="VBoxContainer"]
@@ -108,7 +108,7 @@ theme_override_font_sizes/font_size = 13
 theme_override_styles/focus = SubResource("StyleBoxFlat_2bkxv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_86a87")
 theme_override_styles/normal = SubResource("StyleBoxFlat_haodl")
-text = "Exit game"
+text = "Salir del juego"
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]

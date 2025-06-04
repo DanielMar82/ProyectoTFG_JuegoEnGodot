@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://ctge1q2ecywqd"
+path="res://.godot/imported/Walter.dialogue-a97dbc5942025096a5f3b3e3b0516054.tres"
+
+[deps]
+
+source_file="res://Dialogues/Walter.dialogue"
+dest_files=["res://.godot/imported/Walter.dialogue-a97dbc5942025096a5f3b3e3b0516054.tres"]
+
+[params]
+
+defaults=true

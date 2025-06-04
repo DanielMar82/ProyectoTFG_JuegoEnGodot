@@ -132,37 +132,36 @@ size_flags_vertical = 4
 
 [node name="VolumeButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 14
 theme_override_styles/focus = SubResource("StyleBoxFlat_2eowd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lj4oq")
 theme_override_styles/normal = SubResource("StyleBoxFlat_qwhev")
-text = "Volume"
+text = "Volumen"
 
 [node name="ResolutionButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 14
 theme_override_styles/focus = SubResource("StyleBoxFlat_2eowd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lj4oq")
 theme_override_styles/normal = SubResource("StyleBoxFlat_qwhev")
-text = "Resolution
+text = "Resolución
 "
 
 [node name="RestartButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 14
 theme_override_styles/focus = SubResource("StyleBoxFlat_2eowd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lj4oq")
 theme_override_styles/normal = SubResource("StyleBoxFlat_qwhev")
-text = "Go back
-"
+text = "Volver atrás"
 
 [node name="ExitButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 14
 theme_override_styles/focus = SubResource("StyleBoxFlat_2eowd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lj4oq")
 theme_override_styles/normal = SubResource("StyleBoxFlat_qwhev")
-text = "Exit the game"
+text = "Salir del juego"
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/VolumeButton" to="." method="_on_volume_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ResolutionButton" to="." method="_on_resolution_button_pressed"]
