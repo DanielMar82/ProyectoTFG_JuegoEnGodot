@@ -5,6 +5,8 @@ var scroll_speed := 20
 
 func _ready() -> void:
 	$VBoxContainer/PlayButton.grab_focus()
+	#AudioSpScene.musicName = "res://Music_Sounds/Music/Menu.wav"
+	AudioSpScene.play_music_level()
 
 func _process(delta):
 	clouds.position.x -= scroll_speed * delta

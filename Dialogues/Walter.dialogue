@@ -1,0 +1,16 @@
+~ start
+???: ¿Qué quieres?
+- ¿Vendes pan?
+	???: Sí, 20 monedas la barra.
+	- Un poco caro ¿No? 
+		???: ¿Algún problema?
+		- No no, te la compro
+		if GameState.recolectedCoins < 20
+			???: ¿Pero que haces? No tienes el suficiente dinero.
+			???: Vete.
+		else
+			???: Perfecto, no le digas ha nadie que te he vendido esto. Adios
+	- No lo quiero => END
+- Nada, adios => END
+=> END
+
