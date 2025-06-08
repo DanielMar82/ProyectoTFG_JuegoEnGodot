@@ -1,9 +1,4 @@
 ~ start
-Cartel: Bosque prohibido ->
-Carte: Ciudad lumínica <-
-=> END
-
-~ empezar
-Cartel: Bosque bonito ->
-Carte: Ciudad caac <-
+Cartel: Este: Bosque prohibido
+Cartel: Oeste: Ciudad lumínica
 => END

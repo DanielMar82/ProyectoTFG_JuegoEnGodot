@@ -2,4 +2,9 @@
 Hay un cartel en el que pone algo.
 Cartel: Cerrado por motivos extraordinarios (Hoy no me apetece trabajar).
 ¿Ahora donde compro el pan?
+set GameState.shop_visited = true
+=> END
+
+~ aviso 
+No me puedo entretener, tengo que ir a comprar el pan.
 => END

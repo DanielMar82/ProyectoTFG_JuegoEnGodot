@@ -1,0 +1,6 @@
+~ start
+¿Deseas guardar la partidad?
+- Sí, guardar partidad
+	Perfecto, la partida se ha guardado correctamente. => END
+- No, no guardar => END
+=> END

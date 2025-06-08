@@ -9,6 +9,11 @@ func _ready():
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.get_name() == "Player":
+		GameState.recolectedCoins += 1
+		print(GameState.recolectedCoins)
+		
+		body._add_coin()
+		
 		audioPlayerCoin.play()
 		await get_tree().create_timer(0.1).timeout
 		queue_free()

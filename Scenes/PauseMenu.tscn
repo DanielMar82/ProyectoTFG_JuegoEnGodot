@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cniqud2vmdcgg"]
+[gd_scene load_steps=12 format=3 uid="uid://cniqud2vmdcgg"]
 
 [ext_resource type="Shader" uid="uid://c7p23cy47v058" path="res://PauseMenu.gdshader" id="1_lj4oq"]
 [ext_resource type="Script" uid="uid://dnqjbnfae7g1d" path="res://Scripts/PauseMenu.gd" id="1_qwhev"]
+[ext_resource type="AudioStream" uid="uid://8uoku3dscvqx" path="res://Music_Sounds/Sounds/MenuMove.wav" id="2_ey1tb"]
+[ext_resource type="AudioStream" uid="uid://bu8qmkohefdng" path="res://Music_Sounds/Sounds/MenuClick.wav" id="3_siy43"]
 
 [sub_resource type="Animation" id="Animation_5w4ur"]
 resource_name = "Blur"
@@ -99,6 +101,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qwhev")
 
+[node name="AudioMoves" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ey1tb")
+volume_db = -15.0
+
+[node name="AudioClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_siy43")
+volume_db = -15.0
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_siy43")
@@ -163,7 +173,11 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_lj4oq")
 theme_override_styles/normal = SubResource("StyleBoxFlat_qwhev")
 text = "Salir del juego"
 
+[connection signal="focus_entered" from="PanelContainer/VBoxContainer/VolumeButton" to="." method="_on_button_focus_entered"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/VolumeButton" to="." method="_on_volume_button_pressed"]
+[connection signal="focus_entered" from="PanelContainer/VBoxContainer/ResolutionButton" to="." method="_on_button_focus_entered"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ResolutionButton" to="." method="_on_resolution_button_pressed"]
+[connection signal="focus_entered" from="PanelContainer/VBoxContainer/RestartButton" to="." method="_on_button_focus_entered"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="focus_entered" from="PanelContainer/VBoxContainer/ExitButton" to="." method="_on_button_focus_entered"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

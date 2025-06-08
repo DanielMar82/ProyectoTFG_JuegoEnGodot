@@ -1,0 +1,103 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqln581wb1tat"]
+
+[ext_resource type="Script" uid="uid://c63thplll6goy" path="res://Scripts/GameOver.gd" id="1_m5628"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qg30o"]
+bg_color = Color(0.596078, 0, 0.109804, 0.972549)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m5628"]
+bg_color = Color(0.595415, 0, 0.10975, 0.972549)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k52d1"]
+bg_color = Color(0.596017, 0, 0.0989785, 0.439216)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktc4i"]
+bg_color = Color(0.596078, 0, 0.109804, 0.972549)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uib17"]
+bg_color = Color(0.596078, 0, 0.109804, 0.972549)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m5628")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 180.0
+color = Color(0.0846899, 0.0846899, 0.0846899, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = -44.0
+offset_right = 43.5
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Game Over"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -129.0
+offset_top = -67.0
+offset_right = 129.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="RePlayButton" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_styles/focus = SubResource("StyleBoxFlat_qg30o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_m5628")
+theme_override_styles/normal = SubResource("StyleBoxFlat_k52d1")
+text = "Cargar punto de control"
+
+[node name="MenuStartButton" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+theme_override_styles/focus = SubResource("StyleBoxFlat_ktc4i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_uib17")
+theme_override_styles/normal = SubResource("StyleBoxFlat_k52d1")
+text = "Salir al menu principal
+"
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/RePlayButton" to="." method="_on_re_play_button_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/MenuStartButton" to="." method="_on_menu_start_button_pressed"]

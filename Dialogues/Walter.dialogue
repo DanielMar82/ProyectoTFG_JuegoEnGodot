@@ -1,16 +1,17 @@
 ~ start
-???: ¿Qué quieres?
+???: Hola ¿Qué necesitas?
 - ¿Vendes pan?
 	???: Sí, 20 monedas la barra.
 	- Un poco caro ¿No? 
 		???: ¿Algún problema?
-		- No no, te la compro
+		- No no, la compro.
 		if GameState.recolectedCoins < 20
-			???: ¿Pero que haces? No tienes el suficiente dinero.
+			???: ¿Pero qué haces? No tienes el suficiente dinero.
 			???: Vete.
 		else
-			???: Perfecto, no le digas ha nadie que te he vendido esto. Adios
+			???: Perfecto, no le digas ha nadie que me has visto. Adios
+			set GameState.recolectedCoins = 0
 	- No lo quiero => END
-- Nada, adios => END
+- Nada, adiós => END
 => END
 

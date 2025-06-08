@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cp3jep6i36i7r"]
+[gd_scene load_steps=12 format=3 uid="uid://cp3jep6i36i7r"]
 
 [ext_resource type="Script" uid="uid://dw4miubirmnft" path="res://Scripts/StartMenu.gd" id="1_2w01c"]
 [ext_resource type="Texture2D" uid="uid://0triggqvo46w" path="res://Sprites/Backgrounds/CityBackground1.png" id="1_l5kx3"]
+[ext_resource type="AudioStream" uid="uid://8uoku3dscvqx" path="res://Music_Sounds/Sounds/MenuMove.wav" id="2_2bkxv"]
 [ext_resource type="Texture2D" uid="uid://h0cdghun0dhu" path="res://Sprites/Backgrounds/CityBackground2.png" id="2_haodl"]
+[ext_resource type="AudioStream" uid="uid://bu8qmkohefdng" path="res://Music_Sounds/Sounds/MenuClick.wav" id="2_swkfd"]
 [ext_resource type="Texture2D" uid="uid://b0gmrmn8geygg" path="res://Sprites/Decoration/Title.png" id="3_haodl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2w01c"]
@@ -48,6 +50,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2w01c")
+
+[node name="AudioMoves" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_2bkxv")
+volume_db = -15.0
+
+[node name="AudioClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_swkfd")
+volume_db = -15.0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -110,6 +120,9 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_86a87")
 theme_override_styles/normal = SubResource("StyleBoxFlat_haodl")
 text = "Salir del juego"
 
+[connection signal="focus_entered" from="VBoxContainer/PlayButton" to="." method="_on_button_focus_entered"]
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/OptionsButton" to="." method="_on_button_focus_entered"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/ExitButton" to="." method="_on_button_focus_entered"]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

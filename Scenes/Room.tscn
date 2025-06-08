@@ -1,27 +1,23 @@
-[gd_scene load_steps=16 format=3 uid="uid://bu25ty23aaw4o"]
+[gd_scene load_steps=15 format=3 uid="uid://bu25ty23aaw4o"]
 
-[ext_resource type="AudioStream" uid="uid://dqij3kpmvyow5" path="res://Music_Sounds/Music/Room.wav" id="1_ijr7e"]
-[ext_resource type="Script" uid="uid://l02cc43oequ5" path="res://Scripts/room.gd" id="1_khqja"]
+[ext_resource type="Script" uid="uid://l02cc43oequ5" path="res://Scripts/Room.gd" id="1_khqja"]
 [ext_resource type="Texture2D" uid="uid://b12ifvgvl8mj5" path="res://Sprites/Backgrounds/InteriroBackground1.png" id="1_uj218"]
 [ext_resource type="PackedScene" uid="uid://dtkdd0tcndje" path="res://Scenes/Player.tscn" id="2_a2si3"]
-[ext_resource type="Shader" uid="uid://cgv18827jlqjj" path="res://Scenes/CoinsPanel.gdshader" id="2_mimag"]
 [ext_resource type="Texture2D" uid="uid://cnb86omj0ytaf" path="res://Sprites/Decoration/Coin.png" id="2_si31g"]
 [ext_resource type="Texture2D" uid="uid://q070hsivkglf" path="res://Sprites/TileMaps/RoomTileMap.png" id="3_aaq88"]
 [ext_resource type="Texture2D" uid="uid://d3qwmmtc4b0ku" path="res://Sprites/Decoration/Chair.png" id="4_aaq88"]
+[ext_resource type="Texture2D" uid="uid://bmymggvdjl0ve" path="res://Sprites/Decoration/Hearts.png" id="4_ijr7e"]
 [ext_resource type="Texture2D" uid="uid://dxetqnjdxd867" path="res://Sprites/Decoration/Desk.png" id="5_7gm67"]
 [ext_resource type="Texture2D" uid="uid://dbt7yiah062as" path="res://Sprites/Characters/CharacterMom.png" id="5_mimag"]
 [ext_resource type="PackedScene" uid="uid://c1vgqdrnrd2y3" path="res://Scenes/InteractionScene.tscn" id="7_xebr5"]
+[ext_resource type="Script" uid="uid://dlb4jdbkl7nbp" path="res://Scripts/coins_lifes_hud.gd" id="10_l0f8h"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ijr7e"]
-shader = ExtResource("2_mimag")
-shader_parameter/pixel_size = 4.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mimag"]
-bg_color = Color(0.0313726, 0.0313726, 0.0313726, 0.647059)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_khqja"]
+bg_color = Color(0.0313726, 0.0313726, 0.0313726, 0.627451)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7gm67"]
 texture = ExtResource("3_aaq88")
@@ -177,11 +173,6 @@ sources/0 = SubResource("TileSetAtlasSource_7gm67")
 [node name="Room" type="Node2D"]
 script = ExtResource("1_khqja")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_ijr7e")
-volume_db = -17.0
-autoplay = true
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -190,45 +181,83 @@ autoplay = true
 position = Vector2(164, 96)
 texture = ExtResource("1_uj218")
 
-[node name="CoinsCanvasLayer" type="CanvasLayer" parent="."]
+[node name="CoinsLifesHud" type="CanvasLayer" parent="."]
+script = ExtResource("10_l0f8h")
 
-[node name="Panel" type="Panel" parent="CoinsCanvasLayer"]
-material = SubResource("ShaderMaterial_ijr7e")
+[node name="Panel" type="Panel" parent="CoinsLifesHud"]
 offset_left = 5.0
 offset_top = 5.0
-offset_right = 86.0
-offset_bottom = 34.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_mimag")
+offset_right = 60.0
+offset_bottom = 23.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_khqja")
+metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="CoinsCanvasLayer/Panel"]
-position = Vector2(18, 14)
+[node name="Sprite2D" type="Sprite2D" parent="CoinsLifesHud/Panel"]
+position = Vector2(11, 9)
+scale = Vector2(0.6875, 0.6875)
 texture = ExtResource("2_si31g")
 hframes = 7
 
-[node name="Label" type="Label" parent="CoinsCanvasLayer/Panel"]
-layout_mode = 0
-offset_left = 29.0
-offset_top = 1.0
-offset_right = 35.0
-offset_bottom = 24.0
+[node name="Sprite2DHearts" type="Sprite2D" parent="CoinsLifesHud/Panel"]
+position = Vector2(87, 9)
+scale = Vector2(0.734375, 0.734375)
+texture = ExtResource("4_ijr7e")
+vframes = 6
+frame = 5
+
+[node name="Label" type="Label" parent="CoinsLifesHud/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.382236
+anchor_top = 0.5
+anchor_right = 0.382236
+anchor_bottom = 0.5
+offset_left = -3.023
+offset_top = -13.0
+offset_right = 2.977
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 15
 text = ":"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="CoinsColected" type="Label" parent="CoinsCanvasLayer/Panel"]
-layout_mode = 0
-offset_left = 36.0
-offset_top = 3.0
-offset_right = 79.0
-offset_bottom = 26.0
+[node name="CoinsColected" type="Label" parent="CoinsLifesHud/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.664
+anchor_top = 0.527778
+anchor_right = 0.664
+anchor_bottom = 0.527778
+offset_left = -13.52
+offset_top = -11.5
+offset_right = 13.48
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 15
+text = "0"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_xebr5")
 format = 2
 layer_0/tile_data = PackedInt32Array(327680, 0, 3, 327681, 65536, 3, 327682, 65536, 3, 327683, 65536, 3, 327684, 65536, 3, 327685, 65536, 3, 327686, 65536, 3, 327687, 65536, 3, 327688, 65536, 3, 327689, 131072, 3, 262153, 131072, 2, 196617, 131072, 1, 131081, 131072, 1, 65545, 131072, 1, 9, 131072, 0, 8, 65536, 0, 7, 65536, 0, 6, 65536, 0, 5, 65536, 0, 4, 65536, 0, 3, 65536, 0, 2, 65536, 0, 1, 65536, 0, 0, 0, 0, 262144, 196608, 1, 196608, 196608, 0, 131072, 0, 1, 65536, 0, 1, 65537, 65536, 1, 65541, 65536, 1, 65540, 65536, 1, 65539, 65536, 1, 65538, 65536, 1, 131074, 65536, 1, 131073, 65536, 1, 196609, 65536, 1, 262145, 65536, 2, 262146, 65536, 2, 196610, 65536, 1, 196611, 65536, 1, 131075, 65536, 1, 131076, 65536, 1, 196612, 65536, 1, 262148, 65536, 2, 262147, 65536, 2, 262149, 65536, 2, 196613, 65536, 1, 131077, 65536, 1, 131078, 65536, 1, 65542, 65536, 1, 65543, 65536, 1, 131079, 65536, 1, 196615, 65536, 1, 196614, 65536, 1, 262150, 65536, 2, 262151, 65536, 2, 262152, 65536, 2, 196616, 65536, 1, 131080, 65536, 1, 65544, 65536, 1)
 
-[node name="CharacterMom" type="Sprite2D" parent="."]
-position = Vector2(266, 132)
+[node name="InteractionMom" parent="." instance=ExtResource("7_xebr5")]
+position = Vector2(264, 107)
+scale = Vector2(2, 1)
+event = "Dialogue"
+dialogue = "res://Dialogues/Mom.dialogue"
+charecter = true
+dialoguePoint = "peticion"
+
+[node name="CharacterMom" type="Sprite2D" parent="InteractionMom"]
+position = Vector2(-0.5, 25)
+scale = Vector2(0.5, 1)
 texture = ExtResource("5_mimag")
 flip_h = true
 
@@ -261,4 +290,8 @@ texture = ExtResource("5_7gm67")
 position = Vector2(25, 107)
 event = "Change"
 next_scene_path = "res://Scenes/city.tscn"
-player_spawn_position = Vector2(87, 118)
+player_spawn_position = Vector2(-79, 5)
+requires_flag = true
+required_flag_name = "peticionMadre"
+locked_dialogue = "res://Dialogues/Mom.dialogue"
+locked_dialogue_point = "aviso"

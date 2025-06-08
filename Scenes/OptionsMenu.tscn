@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8cqbac0ypsk2"]
+[gd_scene load_steps=9 format=3 uid="uid://b8cqbac0ypsk2"]
 
 [ext_resource type="Script" uid="uid://waqoc3v65sqr" path="res://Scripts/OptionsMenu.gd" id="1_ayvsw"]
 [ext_resource type="Texture2D" uid="uid://0triggqvo46w" path="res://Sprites/Backgrounds/CityBackground1.png" id="2_s3xhb"]
+[ext_resource type="AudioStream" uid="uid://8uoku3dscvqx" path="res://Music_Sounds/Sounds/MenuMove.wav" id="2_un4xt"]
 [ext_resource type="Texture2D" uid="uid://h0cdghun0dhu" path="res://Sprites/Backgrounds/CityBackground2.png" id="3_un4xt"]
+[ext_resource type="AudioStream" uid="uid://bu8qmkohefdng" path="res://Music_Sounds/Sounds/MenuClick.wav" id="3_uw46w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uw46w"]
 bg_color = Color(0, 0.345098, 0.443137, 0.972549)
@@ -33,6 +35,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ayvsw")
+
+[node name="AudioMoves" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_un4xt")
+volume_db = -15.0
+
+[node name="AudioClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_uw46w")
+volume_db = -15.0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -91,6 +101,9 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_itlgr")
 text = "Volver atrás
 "
 
+[connection signal="focus_entered" from="VBoxContainer/VolumeButton" to="." method="_on_button_focus_entered"]
 [connection signal="pressed" from="VBoxContainer/VolumeButton" to="." method="_on_volume_button_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/ResolutionButton" to="." method="_on_button_focus_entered"]
 [connection signal="pressed" from="VBoxContainer/ResolutionButton" to="." method="_on_resolution_button_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/BackButton" to="." method="_on_button_focus_entered"]
 [connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
