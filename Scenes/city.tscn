@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://yb17fkmmg1xl"]
+[gd_scene load_steps=25 format=3 uid="uid://yb17fkmmg1xl"]
 
 [ext_resource type="PackedScene" uid="uid://cniqud2vmdcgg" path="res://Scenes/PauseMenu.tscn" id="1_gab5h"]
 [ext_resource type="Script" uid="uid://cykq4xabpb1ga" path="res://Scripts/City.gd" id="1_skwfe"]
@@ -13,7 +13,6 @@
 [ext_resource type="Script" uid="uid://dlb4jdbkl7nbp" path="res://Scripts/coins_lifes_hud.gd" id="7_p1kk6"]
 [ext_resource type="Texture2D" uid="uid://bmymggvdjl0ve" path="res://Sprites/Decoration/Hearts.png" id="7_pdxid"]
 [ext_resource type="Texture2D" uid="uid://c6usqhelqjg2u" path="res://Sprites/Characters/Character3.png" id="8_hluyl"]
-[ext_resource type="PackedScene" uid="uid://dm78yfnpcqn0x" path="res://Scenes/coin.tscn" id="8_ujmo6"]
 [ext_resource type="Texture2D" uid="uid://002q7eld3p8a" path="res://Sprites/TileMaps/BuildingsTileMap.png" id="9_ifi4l"]
 [ext_resource type="Script" uid="uid://c5ndxnxu63pfm" path="res://Scripts/death_zone.gd" id="12_2cq4n"]
 [ext_resource type="Script" uid="uid://dyerbnputx0w7" path="res://Scripts/change.gd" id="14_oic26"]
@@ -266,7 +265,7 @@ sources/0 = SubResource("TileSetAtlasSource_oic26")
 sources/1 = SubResource("TileSetAtlasSource_pdxid")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifi4l"]
-size = Vector2(1463, 28)
+size = Vector2(1762, 21)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gab5h"]
 size = Vector2(20, 119)
@@ -420,9 +419,6 @@ required_flag_name = "shop_visited"
 locked_dialogue = "res://Dialogues/Shop.dialogue"
 locked_dialogue_point = "aviso"
 
-[node name="Coin2" parent="." instance=ExtResource("8_ujmo6")]
-position = Vector2(126, -52)
-
 [node name="Player" parent="." instance=ExtResource("1_u7naw")]
 position = Vector2(-80, 5)
 
@@ -444,7 +440,7 @@ script = ExtResource("15_76y8w")
 script = ExtResource("12_2cq4n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
-position = Vector2(302.5, 184)
+position = Vector2(326, 180.5)
 shape = SubResource("RectangleShape2D_ifi4l")
 
 [node name="Change" type="Area2D" parent="."]
@@ -459,7 +455,6 @@ position = Vector2(0, -34.5)
 shape = SubResource("RectangleShape2D_gab5h")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("1_gab5h")]
 metadata/_edit_use_anchors_ = true

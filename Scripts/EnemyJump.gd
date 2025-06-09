@@ -50,7 +50,6 @@ func _physics_process(delta: float) -> void:
 		follow()
 	else:
 		patrol()
-		#move_character()
 	move_character()
 	update_animation()
 
@@ -64,17 +63,9 @@ func follow():
 	if abs(direction) > 5:
 		var was_moving_left = moving_left
 		moving_left = direction < 0
-		#velocity.x = -SPEED if moving_left else SPEED
 		
 		if was_moving_left != moving_left:
 			scale.x = -scale.x
-	#if player.position.x < position.x:
-		#moving_left = true
-	#else: 
-		#moving_left = false
-	#var direction = -1 if moving_left else 1  # Uso correcto del operador ternario
-	#velocity.x = SPEED * direction
-	#move_and_slide()
 
 func patrol():
 	if ray_cast_horizontal.is_colliding():
@@ -82,13 +73,7 @@ func patrol():
 		scale.x = -scale.x
 
 func move_character():
-	#animation_player.play("Move")
 	velocity.y += gravity
-	#if moving_left:
-		#velocity.x = -SPEED
-	#else:
-		#velocity.x = SPEED
-	#velocity.x = -SPEED if moving_left else SPEED
 	move_and_slide()
 
 

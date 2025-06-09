@@ -7,18 +7,26 @@ var lifes: int = 6
 
 var peticionMadre = false;
 var shop_visited = false;
+var bread = false;
 
+var collected_coins: Array = []
 var game_over_triggered: bool = false
 
-# Called when the node enters the scene tree for the first time.
+var saveGame = false
+
 func _ready() -> void:
 	pass
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if lifes <= 0 and not game_over_triggered:
 		game_over_triggered = true
 		TransitionScreen.transition()
 		await TransitionScreen.on_transition_finished
 		get_tree().change_scene_to_file("res://Scenes/GameOver.tscn")
+		
+
+func finishGame():
+	AudioSpScene.stop()
+	TransitionScreen.transition()
+	await TransitionScreen.on_transition_finished
+	get_tree().change_scene_to_file("res://Scenes/End.tscn")

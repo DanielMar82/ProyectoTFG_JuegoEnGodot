@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bu25ty23aaw4o"]
+[gd_scene load_steps=18 format=3 uid="uid://bu25ty23aaw4o"]
 
 [ext_resource type="Script" uid="uid://l02cc43oequ5" path="res://Scripts/Room.gd" id="1_khqja"]
 [ext_resource type="Texture2D" uid="uid://b12ifvgvl8mj5" path="res://Sprites/Backgrounds/InteriroBackground1.png" id="1_uj218"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://dbt7yiah062as" path="res://Sprites/Characters/CharacterMom.png" id="5_mimag"]
 [ext_resource type="PackedScene" uid="uid://c1vgqdrnrd2y3" path="res://Scenes/InteractionScene.tscn" id="7_xebr5"]
 [ext_resource type="Script" uid="uid://dlb4jdbkl7nbp" path="res://Scripts/coins_lifes_hud.gd" id="10_l0f8h"]
+[ext_resource type="Script" uid="uid://c5ndxnxu63pfm" path="res://Scripts/death_zone.gd" id="12_l0f8h"]
+[ext_resource type="PackedScene" uid="uid://cniqud2vmdcgg" path="res://Scenes/PauseMenu.tscn" id="13_vofke"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_khqja"]
 bg_color = Color(0.0313726, 0.0313726, 0.0313726, 0.627451)
@@ -170,6 +172,9 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_7gm67")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vofke"]
+size = Vector2(836, 12.5)
+
 [node name="Room" type="Node2D"]
 script = ExtResource("1_khqja")
 
@@ -295,3 +300,17 @@ requires_flag = true
 required_flag_name = "peticionMadre"
 locked_dialogue = "res://Dialogues/Mom.dialogue"
 locked_dialogue_point = "aviso"
+
+[node name="DeathZone" type="Area2D" parent="."]
+script = ExtResource("12_l0f8h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(191, 240)
+shape = SubResource("RectangleShape2D_vofke")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("13_vofke")]
+metadata/_edit_use_anchors_ = true
+
+[connection signal="body_entered" from="DeathZone" to="DeathZone" method="_on_body_entered"]

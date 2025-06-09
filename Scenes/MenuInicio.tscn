@@ -77,7 +77,7 @@ scale = Vector2(0.864865, 0.818182)
 texture = ExtResource("2_haodl")
 
 [node name="Title" type="Sprite2D" parent="."]
-position = Vector2(159.75, 53)
+position = Vector2(160, 46)
 scale = Vector2(2.24219, 2.24219)
 texture = ExtResource("3_haodl")
 
@@ -89,23 +89,31 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -71.0
-offset_top = -84.0
+offset_top = -90.0
 offset_right = 71.0
-offset_bottom = -16.0
+offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="PlayButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 14
 theme_override_styles/focus = SubResource("StyleBoxFlat_2w01c")
 theme_override_styles/hover = SubResource("StyleBoxFlat_swkfd")
 theme_override_styles/normal = SubResource("StyleBoxFlat_haodl")
 text = "Nueva partida"
 
+[node name="LoadButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+theme_override_styles/focus = SubResource("StyleBoxFlat_2w01c")
+theme_override_styles/hover = SubResource("StyleBoxFlat_swkfd")
+theme_override_styles/normal = SubResource("StyleBoxFlat_haodl")
+text = "Cargar partida"
+
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 10
 theme_override_styles/focus = SubResource("StyleBoxFlat_2bkxv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_86a87")
 theme_override_styles/normal = SubResource("StyleBoxFlat_haodl")
@@ -114,7 +122,7 @@ text = "Opciones
 
 [node name="ExitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 10
 theme_override_styles/focus = SubResource("StyleBoxFlat_2bkxv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_86a87")
 theme_override_styles/normal = SubResource("StyleBoxFlat_haodl")
@@ -122,6 +130,8 @@ text = "Salir del juego"
 
 [connection signal="focus_entered" from="VBoxContainer/PlayButton" to="." method="_on_button_focus_entered"]
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/LoadButton" to="." method="_on_button_focus_entered"]
+[connection signal="pressed" from="VBoxContainer/LoadButton" to="." method="_on_load_button_pressed"]
 [connection signal="focus_entered" from="VBoxContainer/OptionsButton" to="." method="_on_button_focus_entered"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="focus_entered" from="VBoxContainer/ExitButton" to="." method="_on_button_focus_entered"]

@@ -15,6 +15,9 @@ func _play_music(music: AudioStream, volumen = -15.0):
 	volume_db = volumen
 	play()
 
+func _stop_music():
+	stop()
+
 func  play_music_level():
 	_play_music(level_music)
 	

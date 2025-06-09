@@ -13,8 +13,6 @@ var initial_position: Vector2
 
 func _ready():
 	initial_position = position
-	# Inicializa la posición y bloqueada para evitar saltos al cambiar de estado
-	#locked_y_position = global_position.y
 
 func _process(delta):
 	
@@ -24,21 +22,3 @@ func _process(delta):
 		position.y = clamp(position.y + move_amount * delta, initial_position.y + lower_limit, initial_position.y + upper_limit)
 	else:
 		position.y = lerp(position.y, initial_position.y, 0.1)
-	#var player_pos = get_parent().global_position  # Asumiendo cámara es hijo del jugador
-	
-	#if not is_locked:
-		#if player_pos.x > lock_x_position:
-			#is_locked = true
-			## Bloqueamos la posición Y actual para que no salte cuando se bloquea
-			#locked_y_position = global_position.y
-	#else:
-		#if player_pos.x < lock_x_position:
-			#is_locked = false
-#
-	#if is_locked:
-		## Mantener X bloqueada y Y bloqueada para evitar saltos
-		#global_position.x = lock_x_position
-		#global_position.y = locked_y_position
-	#else:
-		## Seguir al jugador en X e Y cuando no está bloqueada
-		#global_position = player_pos

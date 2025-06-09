@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqln581wb1tat"]
+[gd_scene load_steps=9 format=3 uid="uid://bqln581wb1tat"]
 
 [ext_resource type="Script" uid="uid://c63thplll6goy" path="res://Scripts/GameOver.gd" id="1_m5628"]
+[ext_resource type="AudioStream" uid="uid://8uoku3dscvqx" path="res://Music_Sounds/Sounds/MenuMove.wav" id="2_ktc4i"]
+[ext_resource type="AudioStream" uid="uid://bu8qmkohefdng" path="res://Music_Sounds/Sounds/MenuClick.wav" id="3_uib17"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qg30o"]
 bg_color = Color(0.596078, 0, 0.109804, 0.972549)
@@ -45,6 +47,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_m5628")
+
+[node name="AudioMoves" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ktc4i")
+volume_db = -15.0
+
+[node name="AudioClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_uib17")
+volume_db = -15.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -99,5 +109,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_k52d1")
 text = "Salir al menu principal
 "
 
+[connection signal="focus_entered" from="ColorRect/VBoxContainer/RePlayButton" to="." method="_on_button_focus_entered"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/RePlayButton" to="." method="_on_re_play_button_pressed"]
+[connection signal="focus_entered" from="ColorRect/VBoxContainer/MenuStartButton" to="." method="_on_button_focus_entered"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/MenuStartButton" to="." method="_on_menu_start_button_pressed"]

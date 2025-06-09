@@ -24,15 +24,14 @@ func _ready() -> void:
 	sprite.flip_h = not GameState.player_facing_right
 
 func _loseLife(enemyPosition):
-	#print(GameState.lifes)
 	audio_stream_player.play()
 	GameState.lifes -= 1
 	
 	if position.x < enemyPosition:
-		velocity.x = -1000  # Aumentar el retroceso hacia la izquierda
-		velocity.y = -300   # Aumentar el salto hacia arriba
+		velocity.x = -1000  
+		velocity.y = -300   
 	elif position.x > enemyPosition:
-		velocity.x = 1000    # Aumentar el retroceso hacia la derecha
+		velocity.x = 1000    
 		velocity.y = -300 
 	
 	var coinslifesHud = $"../CoinsLifesHud"

@@ -1,6 +1,8 @@
+
 ~ start
 ¿Deseas guardar la partidad?
 - Sí, guardar partidad
-	Perfecto, la partida se ha guardado correctamente. => END
+	Perfecto, la partida se ha guardado correctamente.
+	do Save.saveData()
 - No, no guardar => END
 => END

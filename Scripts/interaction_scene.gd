@@ -22,17 +22,17 @@ func _ready():
 func _on_interact():
 	var player = get_tree().get_current_scene().get_node("Player")
 	
+	Save.playerPos = player.global_position
+	
 	if player and not player.is_on_floor():
 		return
 	
 	if player:
 		player.can_move = false
 		player.animationPlayer.play("Idle")
-		#player.animationPlayer.stop() HAY QUE HACER QUE EL PLAYER NO SE QUEDE EN IDLE DESPUES DEL EVENTO
 	
 	if event == "Change":
 		if requires_flag and not GameState.get(required_flag_name):
-			# Mostrar diálogo bloqueado
 			if charecter and player.position.x < position.x:
 				scale.x = 2
 			elif charecter and player.position.x > position.x:
@@ -43,23 +43,34 @@ func _on_interact():
 			player.can_move = true
 			return
 		
-		# Si el flag está permitido o no se requiere flag, cambiar de escena
 		GameState.player_spawn_position = player_spawn_position
 		TransitionScreen.transition()
 		await TransitionScreen.on_transition_finished
 		get_tree().change_scene_to_file(next_scene_path)
 		
 	elif event == "Dialogue":
-		print("Dialogo en curso")
 		if charecter && player.position.x < position.x:
 			scale.x = 2
 		elif charecter && player.position.x > position.x:
 			scale.x = -2
 		DialogueManager.show_example_dialogue_balloon(load(dialogue), dialoguePoint)
 		await DialogueManager.dialogue_ended
-		player.can_move = true
 		
-	elif event == "Save":
-		print("JUGADOR QUIERE GUARDAR")
 		player.can_move = true
+
+func saveData():
+	var player = get_tree().get_current_scene().get_node("Player")
 	
+	if player:
+		
+		Save.game_data["Position"] = player.global_position
+		Save.game_data["Lifes"] = GameState.lifes
+		Save.game_data["Coins"] = GameState.recolectedCoins
+		Save.game_data["Scene"] = get_tree().current_scene.scene_file_path
+		Save.game_data["activeMom"] = GameState.peticionMadre
+		Save.game_data["activeShop"] = GameState.shop_visited
+		Save.game_data["activeBread"] = GameState.bread
+		
+		Save.save_game()
+	else:
+		return

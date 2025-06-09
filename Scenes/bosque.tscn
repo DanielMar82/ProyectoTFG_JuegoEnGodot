@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c1lwsoxyja40i"]
+[gd_scene load_steps=34 format=3 uid="uid://c1lwsoxyja40i"]
 
 [ext_resource type="Texture2D" uid="uid://dml47r6fie7rl" path="res://Sprites/Backgrounds/ForestBackground6.png" id="1_doh8l"]
 [ext_resource type="Script" uid="uid://cmtmun0txcfbb" path="res://Scripts/Forest.gd" id="1_jbrsv"]
@@ -22,6 +22,12 @@
 [ext_resource type="PackedScene" uid="uid://dm78yfnpcqn0x" path="res://Scenes/coin.tscn" id="18_jbrsv"]
 [ext_resource type="Texture2D" uid="uid://ti4ibwgohaij" path="res://Sprites/Decoration/CabinaTelefonica.png" id="18_s73gh"]
 [ext_resource type="Script" uid="uid://cr46ocqhqyec1" path="res://Scripts/Camera.gd" id="19_7flax"]
+[ext_resource type="Texture2D" uid="uid://q7xvn06ww6ug" path="res://Sprites/Decoration/Bush1.png" id="19_kj5d4"]
+[ext_resource type="Texture2D" uid="uid://c27lib62u47qf" path="res://Sprites/Decoration/Bush3.png" id="20_og7sj"]
+[ext_resource type="Texture2D" uid="uid://ctvv22qo71pmx" path="res://Sprites/Decoration/Bush2.png" id="21_o5fo8"]
+[ext_resource type="Texture2D" uid="uid://2v7ddp4lmwr4" path="res://Sprites/Decoration/Rock2.png" id="26_6wi4i"]
+[ext_resource type="Texture2D" uid="uid://clwf657b0q555" path="res://Sprites/Decoration/Rock1.png" id="27_1p4fh"]
+[ext_resource type="Texture2D" uid="uid://d3xdpdncv70mq" path="res://Sprites/Decoration/Rock3.png" id="28_kqw10"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s73gh"]
 bg_color = Color(0.0313726, 0.0313726, 0.0313726, 0.627451)
@@ -181,7 +187,7 @@ physics_layer_0/collision_layer = 5
 sources/0 = SubResource("TileSetAtlasSource_dqvu0")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jleft"]
-size = Vector2(5508, 28)
+size = Vector2(5830, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ywdtu"]
 size = Vector2(20, 160)
@@ -353,7 +359,7 @@ flip_h = true
 script = ExtResource("15_p6yx5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
-position = Vector2(2080, 398)
+position = Vector2(2241, 398)
 shape = SubResource("RectangleShape2D_jleft")
 
 [node name="ChangeToCity2" type="Area2D" parent="."]
@@ -404,6 +410,30 @@ position = Vector2(3, 27.2222)
 scale = Vector2(0.742186, 0.824651)
 texture = ExtResource("18_s73gh")
 
+[node name="Bush5" type="Sprite2D" parent="."]
+position = Vector2(2844, -80)
+texture = ExtResource("19_kj5d4")
+
+[node name="Bush6" type="Sprite2D" parent="."]
+position = Vector2(2877, -81)
+texture = ExtResource("20_og7sj")
+
+[node name="Bush7" type="Sprite2D" parent="."]
+position = Vector2(2827, -81)
+texture = ExtResource("20_og7sj")
+
+[node name="Bush8" type="Sprite2D" parent="."]
+position = Vector2(2814, -81)
+texture = ExtResource("21_o5fo8")
+
+[node name="Bush10" type="Sprite2D" parent="."]
+position = Vector2(52, 143)
+texture = ExtResource("20_og7sj")
+
+[node name="Bush11" type="Sprite2D" parent="."]
+position = Vector2(76, 143)
+texture = ExtResource("21_o5fo8")
+
 [node name="Player" parent="." instance=ExtResource("7_ex2ru")]
 position = Vector2(-180, 133)
 
@@ -420,35 +450,102 @@ drag_right_margin = 0.1
 editor_draw_drag_margin = true
 script = ExtResource("19_7flax")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("17_ywdtu")]
-metadata/_edit_use_anchors_ = true
-
 [node name="Coin" parent="." instance=ExtResource("18_jbrsv")]
 position = Vector2(911, -144)
+coin_id = "3"
 
 [node name="Coin2" parent="." instance=ExtResource("18_jbrsv")]
 position = Vector2(1864, 139)
+coin_id = "4"
 
 [node name="Coin3" parent="." instance=ExtResource("18_jbrsv")]
 position = Vector2(2672, -51)
+coin_id = "6"
 
 [node name="Coin4" parent="." instance=ExtResource("18_jbrsv")]
 position = Vector2(4497, 203)
+coin_id = "8"
 
 [node name="Coin5" parent="." instance=ExtResource("18_jbrsv")]
 position = Vector2(1169, 172)
+coin_id = "2"
 
 [node name="Coin6" parent="." instance=ExtResource("18_jbrsv")]
 position = Vector2(3312, 78)
+coin_id = "7"
 
 [node name="Coin7" parent="." instance=ExtResource("18_jbrsv")]
 position = Vector2(432, 42)
+coin_id = "1"
 
 [node name="Coin8" parent="." instance=ExtResource("18_jbrsv")]
 position = Vector2(2114, -84)
+coin_id = "5"
+
+[node name="Rock2" type="Sprite2D" parent="."]
+position = Vector2(3677, 112)
+texture = ExtResource("26_6wi4i")
+
+[node name="Bush3" type="Sprite2D" parent="."]
+position = Vector2(3775, 79)
+texture = ExtResource("20_og7sj")
+
+[node name="Bush1" type="Sprite2D" parent="."]
+position = Vector2(3248, 144)
+texture = ExtResource("19_kj5d4")
+
+[node name="Bush2" type="Sprite2D" parent="."]
+position = Vector2(3207, 144)
+texture = ExtResource("19_kj5d4")
+
+[node name="Bush4" type="Sprite2D" parent="."]
+position = Vector2(3237, 143)
+texture = ExtResource("21_o5fo8")
+
+[node name="Rock1" type="Sprite2D" parent="."]
+position = Vector2(2333, 160)
+texture = ExtResource("27_1p4fh")
+
+[node name="Bush9" type="Sprite2D" parent="."]
+position = Vector2(2369, 176)
+texture = ExtResource("19_kj5d4")
+
+[node name="Rock3" type="Sprite2D" parent="."]
+position = Vector2(1091, 288)
+texture = ExtResource("27_1p4fh")
+
+[node name="Rock4" type="Sprite2D" parent="."]
+position = Vector2(1062, 303)
+texture = ExtResource("26_6wi4i")
+
+[node name="Rock5" type="Sprite2D" parent="."]
+position = Vector2(1042, 303)
+texture = ExtResource("28_kqw10")
+
+[node name="Rock6" type="Sprite2D" parent="."]
+position = Vector2(1024, 288)
+texture = ExtResource("27_1p4fh")
+
+[node name="Rock7" type="Sprite2D" parent="."]
+position = Vector2(1005, 303)
+texture = ExtResource("26_6wi4i")
+
+[node name="Bush12" type="Sprite2D" parent="."]
+position = Vector2(-52, 144)
+texture = ExtResource("19_kj5d4")
+
+[node name="Bush13" type="Sprite2D" parent="."]
+position = Vector2(388, 47)
+texture = ExtResource("21_o5fo8")
+
+[node name="Bush14" type="Sprite2D" parent="."]
+position = Vector2(466, 48)
+texture = ExtResource("19_kj5d4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("17_ywdtu")]
+metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="DeathZone" to="DeathZone" method="_on_body_entered"]
 [connection signal="body_entered" from="ChangeToCity2" to="ChangeToCity2" method="_on_body_entered"]

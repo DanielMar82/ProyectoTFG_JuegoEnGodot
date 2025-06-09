@@ -13,7 +13,7 @@ config_version=5
 config/name="ProyectoTFG_JuegoEnGodot"
 run/main_scene="uid://cp3jep6i36i7r"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://cb7ky75rws04j"
 
 [autoload]
 
@@ -22,6 +22,7 @@ TransitionScreen="*res://Scenes/TransitionScreen.tscn"
 InteractionManager="*res://Interactions/interaction_manager.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 AudioSpScene="*res://Scenes/audioSPScene.tscn"
+Save="*res://Scripts/SAVE.gd"
 
 [display]
 

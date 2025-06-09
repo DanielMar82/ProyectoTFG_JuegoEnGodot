@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://41bygne8q5o3"]
+[gd_scene load_steps=25 format=3 uid="uid://41bygne8q5o3"]
 
 [ext_resource type="Texture2D" uid="uid://0triggqvo46w" path="res://Sprites/Backgrounds/CityBackground1.png" id="1_4wxjh"]
 [ext_resource type="Script" uid="uid://c66nwdncdrh0h" path="res://Scripts/Street.gd" id="1_dpn6e"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://cr46ocqhqyec1" path="res://Scripts/Camera.gd" id="10_n2qt7"]
 [ext_resource type="Texture2D" uid="uid://bsk8attrlrmuh" path="res://Sprites/Characters/CharacterWW.png" id="10_tffa0"]
 [ext_resource type="PackedScene" uid="uid://cniqud2vmdcgg" path="res://Scenes/PauseMenu.tscn" id="13_n76h5"]
+[ext_resource type="Script" uid="uid://c5ndxnxu63pfm" path="res://Scripts/death_zone.gd" id="18_gbwhe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3omct"]
 bg_color = Color(0.0313726, 0.0313726, 0.0313726, 0.627451)
@@ -255,6 +256,9 @@ sources/1 = SubResource("TileSetAtlasSource_ho2fj")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tffa0"]
 size = Vector2(20, 198)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wm8w"]
+size = Vector2(1309, 21)
+
 [node name="Street" type="Node2D"]
 script = ExtResource("1_dpn6e")
 
@@ -416,4 +420,12 @@ script = ExtResource("10_n2qt7")
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("13_n76h5")]
 metadata/_edit_use_anchors_ = true
 
+[node name="DeathZone" type="Area2D" parent="."]
+script = ExtResource("18_gbwhe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(99.5, 180.5)
+shape = SubResource("RectangleShape2D_2wm8w")
+
 [connection signal="body_entered" from="Change" to="Change" method="_on_body_entered"]
+[connection signal="body_entered" from="DeathZone" to="DeathZone" method="_on_body_entered"]

@@ -17,5 +17,9 @@ Mamá: Necesito que vayas a la tienda a comprar una barra de pan.
 => END
 
 ~ encurso
-Mamá: Rápido, no tardes mucho que voy a hacer ya la comida.
+if !GameState.bread
+	Mamá: Rápido, no tardes mucho que voy a hacer ya la comida.
+else
+	Mamá: ¿Ya está? Has tardado un poco ¿No?
+	do GameState.finishGame()
 => END
