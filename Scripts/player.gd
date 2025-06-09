@@ -8,8 +8,11 @@ const jumpHeight = -500
 const up = Vector2(0, -1)
 const gravity = 20
 
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+
 @onready var sprite = $Sprite2D
 @onready var animationPlayer = $AnimationPlayer
+var coins: int = 20
 
 var current_state = ""
 var can_move: bool = true
@@ -20,6 +23,24 @@ func _ready() -> void:
 		GameState.player_spawn_position = Vector2.ZERO
 	sprite.flip_h = not GameState.player_facing_right
 
+func _loseLife(enemyPosition):
+	audio_stream_player.play()
+	GameState.lifes -= 1
+	
+	if position.x < enemyPosition:
+		velocity.x = -1000  
+		velocity.y = -300   
+	elif position.x > enemyPosition:
+		velocity.x = 1000    
+		velocity.y = -300 
+	
+	var coinslifesHud = $"../CoinsLifesHud"
+	coinslifesHud._lose_life()
+
+func _add_coin():
+	var coinslifesHud = $"../CoinsLifesHud"
+	coinslifesHud._sumCoinsNum()
+
 func _physics_process(delta):
 	if not can_move:
 		return
@@ -27,7 +48,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity
 	
-	if is_on_floor() and Input.is_action_just_pressed("ui_accept"):
+	if is_on_floor() and Input.is_action_just_pressed("ui_jump"):
 			velocity.y = jumpHeight
 	
 	var direction = Input.get_axis("ui_left", "ui_right")

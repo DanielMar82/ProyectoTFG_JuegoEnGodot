@@ -1,0 +1,25 @@
+~ llamada
+Mamá: Hijo, ven un momento.
+¿Qué querrá ahora mi madre?
+=> END
+
+~ aviso
+Mi madre me ha llamado, tengo que ir a ver que quiere.
+=> END
+
+~ peticion
+Mamá: Necesito que vayas a la tienda a comprar una barra de pan.
+- De acuerdo, pero no tengo dinero.
+	Mamá: No te preocupes, toma, te doy 5 monedas. Suficiente para una barra.
+	- Perfecto, ahora vengo.
+		set GameState.peticionMadre = true
+		set GameState.recolectedCoins += 5
+=> END
+
+~ encurso
+if !GameState.bread
+	Mamá: Rápido, no tardes mucho que voy a hacer ya la comida.
+else
+	Mamá: ¿Ya está? Has tardado un poco ¿No?
+	do GameState.finishGame()
+=> END

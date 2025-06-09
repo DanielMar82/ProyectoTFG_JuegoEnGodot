@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cgwutegv2bm2d"
+path="res://.godot/imported/Mom.dialogue-0f606e2c4bdde6e061873f8e2a37bb33.tres"
+
+[deps]
+
+source_file="res://Dialogues/Mom.dialogue"
+dest_files=["res://.godot/imported/Mom.dialogue-0f606e2c4bdde6e061873f8e2a37bb33.tres"]
+
+[params]
+
+defaults=true

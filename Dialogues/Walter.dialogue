@@ -1,0 +1,21 @@
+~ start
+if GameState.bread
+	???: Vete, ya no te voy a vender nada más.
+else
+	???: Hola ¿Qué necesitas?
+	- ¿Vendes pan?
+		???: Sí, 20 monedas la barra.
+		- Un poco caro ¿No? 
+			???: ¿Algún problema?
+			- No no, la compro.
+			if GameState.recolectedCoins < 20
+				???: ¿Pero qué haces? No tienes el suficiente dinero.
+				???: Vete.
+			else
+				???: Perfecto, no le digas ha nadie que me has visto. Adios
+				set GameState.recolectedCoins = 0
+				set GameState.bread = true
+		- No lo quiero => END
+	- Nada, adiós => END
+=> END
+

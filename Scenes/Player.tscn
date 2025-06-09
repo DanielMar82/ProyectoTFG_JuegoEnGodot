@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dtkdd0tcndje"]
+[gd_scene load_steps=11 format=3 uid="uid://dtkdd0tcndje"]
 
 [ext_resource type="Texture2D" uid="uid://cv1uji2iyuegx" path="res://Sprites/Characters/character1.png" id="1_0y7nr"]
 [ext_resource type="Script" uid="uid://c0cbljdy6uwxp" path="res://Scripts/player.gd" id="1_jo2ib"]
+[ext_resource type="AudioStream" uid="uid://s6aapp1o870e" path="res://Music_Sounds/Sounds/Damage.wav" id="3_gntrk"]
 
 [sub_resource type="Animation" id="Animation_vdqda"]
 resource_name = "Fall"
@@ -143,7 +144,8 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vdqda"]
 size = Vector2(19, 53)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
+collision_layer = 3
 script = ExtResource("1_jo2ib")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -160,3 +162,7 @@ speed_scale = 7.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_vdqda")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_gntrk")
+volume_db = -15.0
